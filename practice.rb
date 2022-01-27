@@ -27,3 +27,27 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+balances = {}
+
+
+for transaction in blockchain
+  if balances[transaction[:to_user].to_sym] == nil 
+    balances[transaction[:to_user].to_sym] = 0 
+  end
+  balances[transaction[:to_user].to_sym] = balances[transaction[:to_user].to_sym] + transaction[:amount]
+  
+  
+  
+  if transaction[:from_user] != nil  # if from user in blockchain is not nil, do the rest
+    if balances[transaction[:from_user].to_sym] == nil # if user in balances isn't in the hash already, do the rest
+      balances[transaction[:from_user].to_sym] = 0 # set balance to 0 for user if they aren't nil in blockchain and if they aren't already in the hash
+    end
+    balances[transaction[:from_user].to_sym] = balances[transaction[:from_user].to_sym] - transaction[:amount] # udpate balance for user in balances to subtract blockchain amount if they aren't nil in the blockchain
+  end
+end
+
+puts balances
+
+# validate ben
+puts 20000 - 9000 - 1500 + 4500
